@@ -11,5 +11,11 @@ def fileToProgram(file_name, matrix, word_list):
             print("word_list ", word_list)
     file.close()
 
+def displayBoard(matrix):
+    for baris in matrix:
+        for kolom in baris:
+            print(kolom, end=" ")
+        print()
+
 """ PROGRAM UTAMA """
 if __name__ == "__main__":
