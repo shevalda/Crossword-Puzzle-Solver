@@ -8,11 +8,11 @@ def fileToProgram(file_name):
     word_list = []
     for line in file:
         if (line[0] == "-") or (line[0] == "#"):    # matriks crossword
-            temp = list(line.split())
+            temp = [char for char in line]
+            temp = temp[:len(temp)-1]
             matrix.append(temp)
         elif line != '\n':                          # daftar kata dalam crossword
             word_list.extend(line.split(";"))
-            print("word_list ", word_list)
     file.close()
     return n, matrix, word_list
 
@@ -25,5 +25,8 @@ def displayBoard(matrix):
 
 # PROGRAM UTAMA
 if __name__ == "__main__":
-    fn = input()    # file name
+    fn = input("Nama file eksternal : ")        # file name
+    
     N, board, listOfWords = fileToProgram(fn)   # berapa N kotak, matriks papan, daftar kata
+
+    horizontal, vertical = searchForBlanks(board,N)
