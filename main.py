@@ -59,12 +59,30 @@ def checkIntersections(matrix, placeholder):
 
     return li
 
+def uniqueLength(placeholder, word_list):
+    li = []
+
+    for word in word_list:
+        if len([w for w in word_list if len(w) == len(word)]) == 1:
+            li.append(word)
+
+    return li
+
+def insertWordOnBoard(matrix, placeholder, word):
+    for p, w in zip(placeholder, word):
+        matrix[p[0]][p[1]] = w
+
+    return matrix
+
+def matchingUniquePlaceholder(placeholder, word):
+    for ph in placeholder:
+        if len(ph) == len(word):
+            return ph
+
 def displayBoard(matrix):
     " Menampilkan papan Crossword "
     for baris in matrix:
-        for kolom in baris:
-            print(kolom, end=" ")
-        print()
+        print(' '.join(map(str, baris)))
 
 # PROGRAM UTAMA
 if __name__ == "__main__":
@@ -72,6 +90,21 @@ if __name__ == "__main__":
     
     N, board, listOfWords = fileToProgram(fn)   # berapa N kotak, matriks papan, daftar kata
 
+    print("Before solved")
+    displayBoard(board)
+    print()
+
     blankPlaceholder = checkingPlaceholder(board, N)
 
     intersections = checkIntersections(board, blankPlaceholder)
+
+    uniqueLengthWords = uniqueLength(blankPlaceholder, listOfWords)
+
+    if uniqueLengthWords != [[]]:
+        for word in uniqueLengthWords:
+            ph = matchingUniquePlaceholder(blankPlaceholder, word)
+            board = insertWordOnBoard(board, ph, word)
+        
+        print("After words with unique length inserted")
+        displayBoard(board)
+        print()
