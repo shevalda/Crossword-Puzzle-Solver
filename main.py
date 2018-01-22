@@ -48,7 +48,16 @@ def checkingPlaceholder(matrix,n):
             li.append(ver_l)
             ver_l = []
 
-    return li 
+    return li
+
+def checkIntersections(matrix, placeholder):
+    li = []
+
+    for i in range(len(placeholder)):
+        for blank in placeholder[(i+1):]:
+            li.extend([inter for inter in placeholder[i] if inter in blank])
+
+    return li
 
 def displayBoard(matrix):
     " Menampilkan papan Crossword "
@@ -64,3 +73,5 @@ if __name__ == "__main__":
     N, board, listOfWords = fileToProgram(fn)   # berapa N kotak, matriks papan, daftar kata
 
     blankPlaceholder = checkingPlaceholder(board, N)
+
+    intersections = checkIntersections(board, blankPlaceholder)
