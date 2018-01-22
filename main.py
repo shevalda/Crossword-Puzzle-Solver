@@ -153,7 +153,6 @@ if __name__ == "__main__":
     uniqueLengthWords = uniqueLength(listOfWords)
 
     if uniqueLengthWords != [[]]:
-        # usedWords, notYetUsedPlaceholder, usedPlaceholder, notYetUsedWords, board = insertWordsWithUniqueLength(uniqueLengthWords, usedWords, notYetUsedWords, blankPlaceholder, usedPlaceholder, notYetUsedPlaceholder, board)
         for word in uniqueLengthWords:
             usedWords.append(word)
             notYetUsedWords.pop(notYetUsedWords.index(word))
@@ -187,7 +186,7 @@ if __name__ == "__main__":
         intersects = [[p, ph] for p in crntPlaceholder for ph in blankPlaceholder if (ph != crntPlaceholder) and (p in ph)]
         
         # ## BEGIN - TO BE DELETED
-        # if len(notYetUsedPlaceholder) == 2 or len(notYetUsedWords) == 2:
+        # if ['G', 'U', 'T', 'S'] in word_candidates:
         #     print("intersects", intersects)
         #     print("word_candidates BEFORE", word_candidates)
         # ## END - TO BE DELETED
@@ -196,30 +195,30 @@ if __name__ == "__main__":
         word_candidates = matchingWithCharOnBoard(board, crntPlaceholder, intersects, word_candidates)
 
         # ## BEGIN - TO BE DELETED
-        # if len(notYetUsedPlaceholder) == 2 or len(notYetUsedWords) == 2:        
+        # if ['G', 'U', 'T', 'S'] in word_candidates:      
         #     print("word_candidates AFTER ELIMINATION", word_candidates)
         # ## END - TO BE DELETED
+        if len(word_candidates) != 1:
+            for word in word_candidates[:]:          
+                # ## BEGIN - TO BE DELETED
+                # if ['G', 'U', 'T', 'S'] in word_candidates:
+                #     print("word", word)
+                # ## END - TO BE DELETED
+                
+                ins_candidates_len = candidatesLengthThatIntersects(word, intersects, listOfWords, crntPlaceholder)
 
-        for word in word_candidates[:]:          
-            # ## BEGIN - TO BE DELETED
-            # if len(notYetUsedPlaceholder) == 2 or len(notYetUsedWords) == 2:
-            #     print("word", word)
-            # ## END - TO BE DELETED
-            
-            ins_candidates_len = candidatesLengthThatIntersects(word, intersects, listOfWords, crntPlaceholder)
+                # ## BEGIN - TO BE DELETED
+                # if ['G', 'U', 'T', 'S'] in word_candidates:
+                #     print("ins_candidates_len", ins_candidates_len)
+                # ## END - TO BE DELETED
 
-            # ## BEGIN - TO BE DELETED
-            # if len(notYetUsedPlaceholder) == 2 or len(notYetUsedWords) == 2:
-            #     print("ins_candidates_len", ins_candidates_len)
-            # ## END - TO BE DELETED
-
-            if not((0 not in ins_candidates_len) and (1 in ins_candidates_len)):
-                word_candidates.pop(word_candidates.index(word))
-            
-            # ## BEGIN - TO BE DELETED
-            # if len(notYetUsedPlaceholder) == 2 or len(notYetUsedWords) == 2:            
-            #     print("word_candidates AFTER", word_candidates)
-            # ## END - TO BE DELETED
+                if (0 in ins_candidates_len):
+                    word_candidates.pop(word_candidates.index(word))
+                
+                # ## BEGIN - TO BE DELETED
+                # if ['G', 'U', 'T', 'S'] in word_candidates:
+                #     print("word_candidates AFTER", word_candidates)
+                # ## END - TO BE DELETED
         
         if len(word_candidates) == 1:
             inserted = True
@@ -231,13 +230,14 @@ if __name__ == "__main__":
             displayBoard(board)
             print()
             ## END - TO BE DELETED
+            
+            # ## BEGIN - TO BE DELETED
+            # if ['G', 'U', 'T', 'S'] in word_candidates:
+            #     break
+            # ## END - TO BE DELETED
         else:
             notYetUsedPlaceholder.append(crntPlaceholder)
         
-        # ## BEGIN - TO BE DELETED
-        # if len(notYetUsedPlaceholder) == 2 or len(notYetUsedWords) == 2:
-        #     break
-        # ## END - TO BE DELETED
 
     if notYetUsedWords != []:
         for word in notYetUsedWords[:]:
