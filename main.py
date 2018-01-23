@@ -1,4 +1,5 @@
 from copy import deepcopy
+from timeit import default_timer
 
 def fileToProgram(file_name):
     file = open(file_name, "r")
@@ -121,31 +122,29 @@ def displayBoard(matrix):
 
 # PROGRAM UTAMA
 if __name__ == "__main__":
-    fn = input("Nama file eksternal : ")        # file name
-    
-    N, board, listOfWords = fileToProgram(fn)   # berapa N kotak, matriks papan, daftar kata
+    fn = input("Nama file eksternal : ")            # nama file
 
-    usedWords = []                              # mencatat kata yang sudah dimasukkan di papan
-    notYetUsedWords = deepcopy(listOfWords)     # mencatat kata yang belum dimasukkan di papan
+    N, board, listOfWords = fileToProgram(fn)       # berapa N kotak; matriks papan; daftar kata
+    
+    start_time = default_timer()
+
+    notYetUsedWords = deepcopy(listOfWords)         # mencatat kata yang belum dimasukkan di papan
 
     ## Mencatat kumpulan kotak yang kosong di papan
     holL, verL = checkingPlaceholder(board, N)
     blankPlaceholder = holL + verL
 
-    usedPlaceholder = []                                # mencatat kotak yang sudah diisi
     notYetUsedPlaceholder = deepcopy(blankPlaceholder)  # mencatat kotak yang belum diisi
 
-    intersections = checkIntersections(holL, verL)      # mencatat kotak yang menjadi persimpangan
+    intersections = checkIntersections(holL, verL)  # mencatat kotak yang menjadi persimpangan
 
     ## Mengisi kotak yang panjangnya unik
     uniqueLengthWords = uniqueLength(listOfWords)
     if uniqueLengthWords != [[]]:
         for word in uniqueLengthWords:
-            usedWords.append(word)
             notYetUsedWords.pop(notYetUsedWords.index(word))
 
             ph = matchingUniquePlaceholder(blankPlaceholder, word)
-            usedPlaceholder.append(ph)
             notYetUsedPlaceholder.pop(notYetUsedPlaceholder.index(ph))
 
             board = insertWordOnBoard(board, ph, word)  
@@ -172,9 +171,7 @@ if __name__ == "__main__":
                     word_candidates.pop(word_candidates.index(word))
         
         if len(word_candidates) == 1:   ## Jika kandidat kata hanya ada satu, masukkan ke papan
-            inserted = True
             board = insertWordOnBoard(board, crntPlaceholder, word_candidates[0])
-            usedWords.append(word_candidates[0])
             notYetUsedWords.pop(notYetUsedWords.index(word_candidates[0]))            
         else:                           ## Jika kandidat kata ada lebih dari satu, maka kotak belum diisi dulu
             notYetUsedPlaceholder.append(crntPlaceholder)
@@ -182,14 +179,18 @@ if __name__ == "__main__":
     ## Jika terdapat kata-kata yang belum terpakai dan masing-masing kata unik panjangnya
     if notYetUsedWords != []:
         for word in notYetUsedWords[:]:
-            usedWords.append(word)
             notYetUsedWords.pop(notYetUsedWords.index(word))
 
             ph = matchingUniquePlaceholder(notYetUsedPlaceholder, word)
-            usedPlaceholder.append(ph)
             notYetUsedPlaceholder.pop(notYetUsedPlaceholder.index(ph))
 
-            board = insertWordOnBoard(board, ph, word)  
+            board = insertWordOnBoard(board, ph, word)
 
-    print("After all words inserted")
+    end_time = default_timer()
+
+    print()
+    print("Solution")
     displayBoard(board)
+
+    print()
+    print("Waktu eksekusi:", (end_time - start_time) * 1000, "ms")
