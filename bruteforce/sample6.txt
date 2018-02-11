@@ -1,0 +1,17 @@
+15
+#------##------
+#-#-#-#-#-#-#-#
+--------#------
+#-#-#-#-#-#-#-#
+------#--------
+#-#-###-#-#-#-#
+#---------#----
+#-###-###-###-#
+----#---------#
+#-#-#-#-###-#-#
+--------#------
+#-#-#-#-#-#-#-#
+------#--------
+#-#-#-#-#-#-#-#
+------##------#
+FOREST;SEDUCE;SUREFIRE;RECOIL;FRAISE;MANDRAKE;SEMIFINAL;MINT;PEER;REFURBISH;STEADIER;MISUSE;BURIED;LATHERED;SEASON;POSTER;FLUORESCENTTUBE;RHENIUM;READIES;SHIVE;FORBIDDEN;GERMAN;FERULE;STRANGLER;METHO;DECORUM;INSPECT;CHICKENCHASSEUR

@@ -1,0 +1,17 @@
+15
+##-----#-----##
+#####-##-#####-
+-------#-#####-
+-#-##-##-------
+-#-##-##-#####-
+-#-#####-#####-
+-#-------#-----
+-#-###########-
+-##-----##-#---
+-####-####-#-##
+--------##-#-##
+#####-####-##-#
+-------##------
+#####-###-###-#
+#####---------#
+ZEBRA;PANDA;DOLPHIN;GIRAFFE;RACCOON;KOALA;TIGER;CAT;SEAHORSE;BUFFALO;DONKEY;ALLIGATOR;DINOSAURS;LIZARD;RHINO;GORILLA;PENGUIN;DOG;HIPPO;COW;BEAR;ELEPHANT

@@ -1,0 +1,17 @@
+15
+------#-------#
+##-##-#-####-##
+##-#-----------
+-----##-####-##
+-###-##-------#
+-#------####-##
+-#-#-##------##
+-#-#-#######-##
+-#-----------##
+##-#-######-#-#
+----#-------#-#
+-#-##-#####-#-#
+-#-#----------#
+-#-##-#####-###
+-##---#-----###
+OYSTER;CATFISH;SEACUCUMBER;SMELT;LOBSTER;DORADE;SURIMI;GROUNDCONCH;TUNA;SEAFOOD;MUTTONFISH;COD;CONCH;SALMON;TROUT;SOLE;DUNGENESS;STURGEON;ROE;SQUID;COCKLES;CODFISH;SABLEFISH;FISH;
